@@ -67,22 +67,22 @@ const App = () => {
         <div className="field">
           <label>Name: &nbsp;</label>
           <input name="name" value={name} onChange={handleChange} />
-          {nameErr && <p>{nameErr}</p>}
+          {nameErr && <p className="errorMessage">{nameErr}</p>}
         </div>
         <div className="field">
           <label>Email: &nbsp;</label>
           <input name="email" value={email} onChange={handleChange} />
-          {emailErr && <p>{emailErr}</p>}
+          {emailErr && <p className="errorMessage">{emailErr}</p>}
         </div>
         <div className="field">
           <label>Address: &nbsp;</label>
           <input name="address" value={address} onChange={handleChange} />
-          {addressErr && <p>{addressErr}</p>}
+          {addressErr && <p className="errorMessage">{addressErr}</p>}
         </div>
         <div className="field">
           <label>Mobile: &nbsp;</label>
           <input name="mobile" value={mobile} onChange={handleChange} />
-          {mobileErr && <p>{mobileErr}</p>}
+          {mobileErr && <p className="errorMessage">{mobileErr}</p>}
         </div>
         <button>Submit</button>
         {formStatus && <h3>{formStatus}</h3>}

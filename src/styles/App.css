@@ -7,6 +7,6 @@
   margin-bottom: 15px;
 }
 
-p {
+.errorMessage {
   color: red;
 }
