@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./../styles/App.css";
 
-const emptyInputs = { name: "", email: "", address: "", mobile: "" };
-const emptyErrors = { nameErr: "", emailErr: "", addressErr: "", mobileErr: "" }; // prettier-ignore
+const emptyInputs = { name: "", address: "", email: "", mobile: "" };
+const emptyErrors = { nameErr: "", addressErr: "", emailErr: "", mobileErr: "" }; // prettier-ignore
 
 const App = () => {
   const [inputs, setInputs] = useState(emptyInputs);
   const [errors, setErrors] = useState(emptyErrors);
-  const { name, email, address, mobile } = inputs;
-  const { nameErr, emailErr, addressErr, mobileErr } = errors;
+  const { name, address, email, mobile } = inputs;
+  const { nameErr, addressErr, emailErr, mobileErr } = errors;
   const [formStatus, setFormStatus] = useState(null);
 
   function handleChange(e) {
@@ -21,10 +21,10 @@ const App = () => {
   function handleSubmit(e) {
     e.preventDefault();
     const nameErr = validateName();
-    const emailErr = validateEmail();
     const addressErr = validateAddress();
+    const emailErr = validateEmail();
     const mobileErr = validateMobile();
-    const newErrors = { nameErr, emailErr, addressErr, mobileErr };
+    const newErrors = { nameErr, addressErr, emailErr, mobileErr };
     setErrors(newErrors);
     const hasErrors = Object.values(newErrors).some((err) => err !== "");
     if (hasErrors) return setFormStatus("Please fix the above errors.");
@@ -36,14 +36,7 @@ const App = () => {
     const trimmed = name.trim();
     if (!trimmed) return "Name is required *";
     if (!/[^a-zA-Z]/.test(trimmed)) return "";
-    return "Name should only contain letters.";
-  }
-
-  function validateEmail() {
-    const trimmed = email.trim();
-    if (!trimmed) return "Email is required *";
-    if (/^[a-zA-Z0-9!@#$%&]+@[a-zA-Z]+\.com$/.test(trimmed)) return "";
-    return "Email should contain @ and .com";
+    return "Name should contain only letters.";
   }
 
   function validateAddress() {
@@ -51,6 +44,13 @@ const App = () => {
     if (!trimmed) return "Address is required *";
     if (!/[^a-zA-Z0-9]/.test(trimmed)) return "";
     return "Address should not contain special characters";
+  }
+
+  function validateEmail() {
+    const trimmed = email.trim();
+    if (!trimmed) return "Email is required *";
+    if (/^[a-zA-Z0-9!@#$%&]+@[a-zA-Z]+\.com$/.test(trimmed)) return "";
+    return "Email should contain @ and .com";
   }
 
   function validateMobile() {
@@ -70,14 +70,14 @@ const App = () => {
           {nameErr && <p className="errorMessage">{nameErr}</p>}
         </div>
         <div className="field">
-          <label>Email: &nbsp;</label>
-          <input name="email" value={email} onChange={handleChange} />
-          {emailErr && <p className="errorMessage">{emailErr}</p>}
-        </div>
-        <div className="field">
           <label>Address: &nbsp;</label>
           <input name="address" value={address} onChange={handleChange} />
           {addressErr && <p className="errorMessage">{addressErr}</p>}
+        </div>
+        <div className="field">
+          <label>Email: &nbsp;</label>
+          <input name="email" value={email} onChange={handleChange} />
+          {emailErr && <p className="errorMessage">{emailErr}</p>}
         </div>
         <div className="field">
           <label>Mobile: &nbsp;</label>
