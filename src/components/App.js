@@ -36,7 +36,7 @@ const App = () => {
     const trimmed = name.trim();
     if (!trimmed) return "Name is required *";
     if (!/[^a-zA-Z]/.test(trimmed)) return "";
-    return "Name should contain only letters.";
+    return "Name should contain only letters";
   }
 
   function validateAddress() {
@@ -67,22 +67,22 @@ const App = () => {
         <div className="field">
           <label>Name: &nbsp;</label>
           <input name="name" value={name} onChange={handleChange} />
-          {nameErr && <p className="errorMessage">{nameErr}</p>}
+          <p className="errorMessage">{nameErr}</p>
         </div>
         <div className="field">
           <label>Address: &nbsp;</label>
           <input name="address" value={address} onChange={handleChange} />
-          {addressErr && <p className="errorMessage">{addressErr}</p>}
+          <p className="errorMessage">{addressErr}</p>
         </div>
         <div className="field">
           <label>Email: &nbsp;</label>
           <input name="email" value={email} onChange={handleChange} />
-          {emailErr && <p className="errorMessage">{emailErr}</p>}
+          <p className="errorMessage">{emailErr}</p>
         </div>
         <div className="field">
           <label>Mobile: &nbsp;</label>
           <input name="mobile" value={mobile} onChange={handleChange} />
-          {mobileErr && <p className="errorMessage">{mobileErr}</p>}
+          <p className="errorMessage">{mobileErr}</p>
         </div>
         <button>Submit</button>
         {formStatus && <h3>{formStatus}</h3>}
